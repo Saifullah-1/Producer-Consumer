@@ -26,6 +26,11 @@ import { isProxy, toRaw } from 'vue';
 
 export default {
     data(){
+        const currentHost = window.location.hostname
+        const apiBaseUrl = currentHost.includes('app.github.dev')
+            ? `${window.location.protocol}//${currentHost.replace('-8081.', '-8080.')}/`
+            : 'http://localhost:8080/'
+
         return {
             isDrawing : false,
             arrow : null,
@@ -36,7 +41,7 @@ export default {
             Qindex : 0,
             Mindex : 0,
             Aindex : 0,
-            url : 'http://localhost:8080/',
+            url : apiBaseUrl,
             link : false,
             finished : true
         }
