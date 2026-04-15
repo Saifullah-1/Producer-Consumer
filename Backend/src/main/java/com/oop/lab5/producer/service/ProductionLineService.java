@@ -110,7 +110,8 @@ public class ProductionLineService {
     }
 
     public boolean isFinished() {
-        return outputStream().getProducts().size() == productsNo();
+        ProductQueue output = outputStream();
+        return output != null && output.getProducts().size() == productsNo();
     }
 
     public void autoSave() { // Make snapshot << this method should be used during simulation
